@@ -1,0 +1,7 @@
+{
+  "name": "rpg-frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
