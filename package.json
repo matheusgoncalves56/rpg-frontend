@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "@capacitor/core": "1.4.0",
+    "@ionic/pwa-elements": "^1.4.1",
     "@ionic/react": "^4.11.8",
+    "@ionic/react-hooks": "0.0.6",
     "@ionic/react-router": "^4.11.8",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
