@@ -3,23 +3,24 @@ import { IonContent, IonPage, IonGrid, IonRow, IonCol, IonSelect, IonSelectOptio
 import React from 'react';
 
 import PersonalidadeService from '../services/PersonalidadeService'
+import RacaService from '../services/RacaService'
+
 import Personalidade from '../model/Personalidade'
+import Raca from '../model/Raca';
 
 export default class CriarPersonagem extends React.Component {
     personalidadeService: PersonalidadeService;
+    racaService: RacaService;
 
     constructor(props: any) {
         super(props);
         this.personalidadeService = new PersonalidadeService();
+        this.racaService = new RacaService();
     }
 
     state = {
-        personalidades:  [],
-        racas: [
-            "Humano",
-            "Elfo",
-            "Anão"
-        ],
+        personalidades: [],
+        racas: [],
         profissoes: [
             "Clérigo",
             "Paladino",
@@ -28,24 +29,25 @@ export default class CriarPersonagem extends React.Component {
             "Ladrão",
             "Caçador"
         ],
-        personalidadeAleatoria: null,
-        racaAleatoria: null,
         profissaoAleatoria: null,
-        personalidadeSelecionada: new Personalidade(0, '', 0, 0, 0)
+        personalidadeSelecionada: new Personalidade(0, '', 0, 0, 0),
+        racaSelecionada: new Raca(0, '')
     }
 
     componentDidMount() {
         const personalidades = this.personalidadeService.obterPersonalidades();
-        
+        const racas = this.racaService.obterRacas();
+
         const tamanhoPersonalidades = personalidades.length;
         const tamanhoProfissoes = this.state.profissoes.length;
-        const tamanhoRacas = this.state.racas.length;
+        const tamanhoRacas = racas.length;
 
         this.setState({
             personalidades,
+            racas,
             personalidadeSelecionada: personalidades[Math.floor(Math.random() * tamanhoPersonalidades)],
+            racaSelecionada: racas[Math.floor(Math.random() * tamanhoRacas)],
             profissaoAleatoria: Math.floor(Math.random() * tamanhoProfissoes),
-            racaAleatoria: Math.floor(Math.random() * tamanhoRacas),
             
         })
     }
@@ -80,12 +82,12 @@ export default class CriarPersonagem extends React.Component {
                             <IonCol size="4">
                                 <IonSelect>
                                     {
-                                        this.state.racas.map((raca, index) => {
+                                        this.state.racas.map((raca: Raca, index) => {
                                             return (
                                                 <IonSelectOption
                                                     key={index} 
-                                                    selected={index == this.state.racaAleatoria}
-                                                    value={raca}>{raca}</IonSelectOption>
+                                                    selected={raca.id === this.state.racaSelecionada.id}
+                                                    value={raca}>{raca.nome}</IonSelectOption>
                                                 )
                                         })
                                     }
