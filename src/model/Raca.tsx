@@ -1,9 +1,5 @@
-export default class Raca {
-    id: number;
-    nome: string;
+import Caracteristica from './Caracteristica'
+
+export default class Raca extends Caracteristica {
     
-    constructor (id: number, nome: string) {
-        this.id = id;
-        this.nome = nome;
-    }
 }

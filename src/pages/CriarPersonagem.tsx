@@ -1,4 +1,4 @@
-import { IonContent, IonPage, IonGrid, IonRow, IonCol, IonSelect, IonSelectOption, IonHeader,  IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonPage, IonGrid, IonRow, IonCol, IonSelect, IonSelectOption, IonHeader,  IonTitle, IonToolbar, IonItem } from '@ionic/react';
 
 import React from 'react';
 
@@ -31,7 +31,7 @@ export default class CriarPersonagem extends React.Component {
         ],
         profissaoAleatoria: null,
         personalidadeSelecionada: new Personalidade(0, '', 0, 0, 0),
-        racaSelecionada: new Raca(0, '')
+        racaSelecionada: new Raca(0, '', 0, 0, 0)
     }
 
     componentDidMount() {
@@ -109,6 +109,82 @@ export default class CriarPersonagem extends React.Component {
                                     }
                                 </IonSelect>
                             </IonCol>
+                        </IonRow>
+
+                        <IonRow style={{paddingTop: 20  }}>
+                            <IonCol size="6"></IonCol>
+                            <IonCol size="6" style={{padding: 0}}>
+                                <IonGrid style={{padding: 0}}>
+                                    <IonRow>
+                                        <IonCol>
+                                            <div style={{backgroundColor: '#AD1E19', textAlign: 'center', paddingTop: 10, paddingBottom: 10, margin: 1, color: 'white'}} >3</div>
+                                        </IonCol>
+                                        <IonCol>
+                                            <div style={{backgroundColor: '#1D930C', textAlign: 'center', paddingTop: 10, paddingBottom: 10, margin: 1, color: 'white'}} >3</div>
+                                        </IonCol>
+                                        <IonCol>
+                                        <div style={{backgroundColor: '#0A5E98', textAlign: 'center', paddingTop: 10, paddingBottom: 10, margin: 1, color: 'white'}} >3</div>
+                                        </IonCol>
+                                    </IonRow>
+                                    <IonRow style={{paddingTop: 20}}>
+                                        <IonCol size="2">
+                                            <div style={{background: 'black', width: '100%', height: '100%'}}></div>
+                                        </IonCol>
+                                        <IonCol>
+                                            <div style={{float: 'left'}}>Dano</div>
+                                        </IonCol>
+                                        <IonCol>
+                                            <div style={{float: 'right'}}>20</div>
+                                        </IonCol>
+                                    </IonRow>
+                                    <IonRow>
+                                        <IonCol size="2">
+                                            <div style={{background: 'black', width: '100%', height: '100%'}}></div>
+                                        </IonCol>
+                                        <IonCol>
+                                            <div style={{float: 'left'}}>Dano</div>
+                                        </IonCol>
+                                        <IonCol>
+                                            <div style={{float: 'right'}}>20</div>
+                                        </IonCol>
+                                    </IonRow>
+                                    <IonRow>
+                                        <IonCol size="2">
+                                            <div style={{background: 'black', width: '100%', height: '100%'}}></div>
+                                        </IonCol>
+                                        <IonCol>
+                                            <div style={{float: 'left'}}>Dano</div>
+                                        </IonCol>
+                                        <IonCol>
+                                            <div style={{float: 'right'}}>20</div>
+                                        </IonCol>
+                                    </IonRow>
+                                    <IonRow>
+                                        <IonCol size="2">
+                                            <div style={{background: 'black', width: '100%', height: '100%'}}></div>
+                                        </IonCol>
+                                        <IonCol>
+                                            <div style={{float: 'left'}}>Dano</div>
+                                        </IonCol>
+                                        <IonCol>
+                                            <div style={{float: 'right'}}>20</div>
+                                        </IonCol>
+                                    </IonRow>
+                                    <IonRow>
+                                        <IonCol size="2">
+                                            <div style={{background: 'black', width: '100%', height: '100%'}}></div>
+                                        </IonCol>
+                                        <IonCol>
+                                            <div style={{float: 'left'}}>Dano</div>
+                                        </IonCol>
+                                        <IonCol>
+                                            <div style={{float: 'right'}}>20</div>
+                                        </IonCol>
+                                    </IonRow>
+                                </IonGrid>
+                                
+                            </IonCol>
+                        
                         </IonRow>
                     </IonGrid>
                 </IonContent>
