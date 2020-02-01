@@ -4,32 +4,29 @@ import React from 'react';
 
 import PersonalidadeService from '../services/PersonalidadeService'
 import RacaService from '../services/RacaService'
+import ProfissaoService from '../services/ProfissaoService'
 
 import Personalidade from '../model/Personalidade'
 import Raca from '../model/Raca';
+import Profissao from '../model/Profissao'
 
 export default class CriarPersonagem extends React.Component {
     personalidadeService: PersonalidadeService;
     racaService: RacaService;
+    profissaoService: ProfissaoService;
 
     constructor(props: any) {
         super(props);
         this.personalidadeService = new PersonalidadeService();
         this.racaService = new RacaService();
+        this.profissaoService = new ProfissaoService();
     }
 
     state = {
         personalidades: [],
         racas: [],
-        profissoes: [
-            "Clérigo",
-            "Paladino",
-            "Guerreiro",
-            "Mago",
-            "Ladrão",
-            "Caçador"
-        ],
-        profissaoAleatoria: null,
+        profissoes: [],
+        profissaoSelecionada: new Profissao(0, '', 0, 0, 0),
         personalidadeSelecionada: new Personalidade(0, '', 0, 0, 0),
         racaSelecionada: new Raca(0, '', 0, 0, 0)
     }
@@ -37,18 +34,19 @@ export default class CriarPersonagem extends React.Component {
     componentDidMount() {
         const personalidades = this.personalidadeService.obterPersonalidades();
         const racas = this.racaService.obterRacas();
+        const profissoes = this.profissaoService.obterProfissoes();
 
         const tamanhoPersonalidades = personalidades.length;
-        const tamanhoProfissoes = this.state.profissoes.length;
+        const tamanhoProfissoes = profissoes.length;
         const tamanhoRacas = racas.length;
 
         this.setState({
             personalidades,
             racas,
+            profissoes,
             personalidadeSelecionada: personalidades[Math.floor(Math.random() * tamanhoPersonalidades)],
             racaSelecionada: racas[Math.floor(Math.random() * tamanhoRacas)],
-            profissaoAleatoria: Math.floor(Math.random() * tamanhoProfissoes),
-            
+            profissaoSelecionada: profissoes[Math.floor(Math.random() * tamanhoProfissoes)],
         })
     }
 
@@ -98,12 +96,12 @@ export default class CriarPersonagem extends React.Component {
                                     console.log(event)
                                 }}>
                                     {
-                                        this.state.profissoes.map((profissao, index) => {
+                                        this.state.profissoes.map((profissao: Profissao, index) => {
                                             return (
                                                 <IonSelectOption
                                                     key={index} 
-                                                    selected={index == this.state.profissaoAleatoria    }
-                                                    value={profissao}>{profissao}</IonSelectOption>
+                                                    selected={profissao.id == this.state.profissaoSelecionada.id    }
+                                                    value={profissao}>{profissao.nome}</IonSelectOption>
                                                 )
                                         })
                                     }
