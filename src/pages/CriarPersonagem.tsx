@@ -5,27 +5,32 @@ import React from 'react';
 import PersonalidadeService from '../services/PersonalidadeService'
 import RacaService from '../services/RacaService'
 import ProfissaoService from '../services/ProfissaoService'
+import AtributoService from '../services/AtributoService'
 
 import Personalidade from '../model/Personalidade'
 import Raca from '../model/Raca';
 import Profissao from '../model/Profissao'
+import Atributo from '../model/Atributo'
 
 export default class CriarPersonagem extends React.Component {
     personalidadeService: PersonalidadeService;
     racaService: RacaService;
     profissaoService: ProfissaoService;
+    atributoService: AtributoService;
 
     constructor(props: any) {
         super(props);
         this.personalidadeService = new PersonalidadeService();
         this.racaService = new RacaService();
         this.profissaoService = new ProfissaoService();
+        this.atributoService = new AtributoService();
     }
 
     state = {
         personalidades: [],
         racas: [],
         profissoes: [],
+        atributos: [],
         profissaoSelecionada: new Profissao(0, '', 0, 0, 0),
         personalidadeSelecionada: new Personalidade(0, '', 0, 0, 0),
         racaSelecionada: new Raca(0, '', 0, 0, 0)
@@ -40,10 +45,13 @@ export default class CriarPersonagem extends React.Component {
         const tamanhoProfissoes = profissoes.length;
         const tamanhoRacas = racas.length;
 
+        const atributos = this.atributoService.obterAtributos();
+
         this.setState({
             personalidades,
             racas,
             profissoes,
+            atributos,
             personalidadeSelecionada: personalidades[Math.floor(Math.random() * tamanhoPersonalidades)],
             racaSelecionada: racas[Math.floor(Math.random() * tamanhoRacas)],
             profissaoSelecionada: profissoes[Math.floor(Math.random() * tamanhoProfissoes)],
@@ -113,7 +121,7 @@ export default class CriarPersonagem extends React.Component {
                             <IonCol size="6"></IonCol>
                             <IonCol size="6" style={{padding: 0}}>
                                 <IonGrid style={{padding: 0}}>
-                                    <IonRow>
+                                    <IonRow style={{marginBottom: '10px'}}>
                                         <IonCol>
                                             <div style={{backgroundColor: '#AD1E19', textAlign: 'center', paddingTop: 10, paddingBottom: 10, margin: 1, color: 'white'}} >3</div>
                                         </IonCol>
@@ -123,62 +131,26 @@ export default class CriarPersonagem extends React.Component {
                                         <IonCol>
                                         <div style={{backgroundColor: '#0A5E98', textAlign: 'center', paddingTop: 10, paddingBottom: 10, margin: 1, color: 'white'}} >3</div>
                                         </IonCol>
-                                    </IonRow>
-                                    <IonRow style={{paddingTop: 20}}>
-                                        <IonCol size="2">
-                                            <div style={{background: 'black', width: '100%', height: '100%'}}></div>
-                                        </IonCol>
-                                        <IonCol>
-                                            <div style={{float: 'left'}}>Dano</div>
-                                        </IonCol>
-                                        <IonCol>
-                                            <div style={{float: 'right'}}>20</div>
-                                        </IonCol>
-                                    </IonRow>
-                                    <IonRow>
-                                        <IonCol size="2">
-                                            <div style={{background: 'black', width: '100%', height: '100%'}}></div>
-                                        </IonCol>
-                                        <IonCol>
-                                            <div style={{float: 'left'}}>Dano</div>
-                                        </IonCol>
-                                        <IonCol>
-                                            <div style={{float: 'right'}}>20</div>
-                                        </IonCol>
-                                    </IonRow>
-                                    <IonRow>
-                                        <IonCol size="2">
-                                            <div style={{background: 'black', width: '100%', height: '100%'}}></div>
-                                        </IonCol>
-                                        <IonCol>
-                                            <div style={{float: 'left'}}>Dano</div>
-                                        </IonCol>
-                                        <IonCol>
-                                            <div style={{float: 'right'}}>20</div>
-                                        </IonCol>
-                                    </IonRow>
-                                    <IonRow>
-                                        <IonCol size="2">
-                                            <div style={{background: 'black', width: '100%', height: '100%'}}></div>
-                                        </IonCol>
-                                        <IonCol>
-                                            <div style={{float: 'left'}}>Dano</div>
-                                        </IonCol>
-                                        <IonCol>
-                                            <div style={{float: 'right'}}>20</div>
-                                        </IonCol>
-                                    </IonRow>
-                                    <IonRow>
-                                        <IonCol size="2">
-                                            <div style={{background: 'black', width: '100%', height: '100%'}}></div>
-                                        </IonCol>
-                                        <IonCol>
-                                            <div style={{float: 'left'}}>Dano</div>
-                                        </IonCol>
-                                        <IonCol>
-                                            <div style={{float: 'right'}}>20</div>
-                                        </IonCol>
-                                    </IonRow>
+                                    </IonRow>   
+                                    
+                                    
+                                    {
+                                        this.state.atributos.map((atributo: Atributo, index) => {
+                                            return (
+                                                <IonRow key={index}>
+                                                    <IonCol size="2">
+                                                        <div style={{background: 'black', width: '16x', height: '16px'}}></div>
+                                                    </IonCol>
+                                                    <IonCol>
+                                                        <div style={{float: 'left'}}>{atributo.nome}</div>
+                                                    </IonCol>
+                                                    <IonCol size="1">
+                                                        <div style={{float: 'right'}}>{atributo.valor1}</div>
+                                                    </IonCol>
+                                                </IonRow>
+                                            )
+                                        })
+                                    }
                                 </IonGrid>
                                 
                             </IonCol>
