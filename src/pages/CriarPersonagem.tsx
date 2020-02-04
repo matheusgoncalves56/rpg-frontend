@@ -12,6 +12,8 @@ import Raca from '../model/Raca';
 import Profissao from '../model/Profissao'
 import Atributo from '../model/Atributo'
 
+import icon_vida from '../assets/img/icon_vida.png'
+import icon_mana from '../assets/img/icon_mana.png'
 export default class CriarPersonagem extends React.Component {
     personalidadeService: PersonalidadeService;
     racaService: RacaService;
@@ -157,24 +159,46 @@ export default class CriarPersonagem extends React.Component {
                         </IonRow>
                         <IonRow style={{paddingTop: '20px'}}>
                             <IonCol size="1">
-                                <div style={{background: 'red', width: '100%', height: '20px'}}></div>
+                                <div style={{width: '100%', height: '20px'}}>
+                                    <img src={icon_vida}></img>
+                                </div>
                             </IonCol>
                             <IonCol >
-                                <div style={{background: 'red', width: '100%', height: '20px', textAlign: 'center'}}>
+                                <div style={{background: '#b61d1d', width: '100%', height: '18px', textAlign: 'center'}}>
                                     <p style={{margin: 0, paddingTop: '1px', color: 'white'}}>190/190</p>
                                 </div>
                             </IonCol>
                         </IonRow>
                         <IonRow>
                             <IonCol size="1">
-                                <div style={{background: 'blue', width: '100%', height: '20px'}}>
-                                    
+                                <div style={{width: '100%', height: '20px'}}>
+                                    <img src={icon_mana}></img>
                                 </div>
                             </IonCol>
                             <IonCol >
-                                <div style={{background: 'blue', width: '100%', height: '20px', textAlign: 'center'}}>
+                                <div style={{background: '#464caf', width: '100%', height: '18px', textAlign: 'center'}}>
                                     <p style={{margin: 0, paddingTop: '1px', color: 'white'}}>100/100</p>
                                 </div>
+                            </IonCol>
+                        </IonRow>
+                        <IonRow style={{marginTop: '10px'}}>
+                            <IonCol style={{padding: 0}}>
+                                <div style={{height: '50px', border: '1px solid black'}}></div>
+                            </IonCol>
+                            <IonCol style={{padding: 0}}>
+                                <div style={{height: '50px', border: '1px solid black'}}></div>
+                            </IonCol>
+                            <IonCol style={{padding: 0}}>
+                                <div style={{height: '50px', border: '1px solid black'}}></div>
+                            </IonCol>
+                            <IonCol style={{padding: 0}}>
+                                <div style={{height: '50px', border: '1px solid black'}}></div>
+                            </IonCol>
+                            <IonCol style={{padding: 0}}>
+                                <div style={{height: '50px', border: '1px solid black'}}></div>
+                            </IonCol>
+                            <IonCol style={{padding: 0}}>
+                                <div style={{height: '50px', border: '1px solid black'}}></div>
                             </IonCol>
                         </IonRow>
                     </IonGrid>
