@@ -154,7 +154,28 @@ export default class CriarPersonagem extends React.Component {
                                 </IonGrid>
                                 
                             </IonCol>
-                        
+                        </IonRow>
+                        <IonRow style={{paddingTop: '20px'}}>
+                            <IonCol size="1">
+                                <div style={{background: 'red', width: '100%', height: '20px'}}></div>
+                            </IonCol>
+                            <IonCol >
+                                <div style={{background: 'red', width: '100%', height: '20px', textAlign: 'center'}}>
+                                    <p style={{margin: 0, paddingTop: '1px', color: 'white'}}>190/190</p>
+                                </div>
+                            </IonCol>
+                        </IonRow>
+                        <IonRow>
+                            <IonCol size="1">
+                                <div style={{background: 'blue', width: '100%', height: '20px'}}>
+                                    
+                                </div>
+                            </IonCol>
+                            <IonCol >
+                                <div style={{background: 'blue', width: '100%', height: '20px', textAlign: 'center'}}>
+                                    <p style={{margin: 0, paddingTop: '1px', color: 'white'}}>100/100</p>
+                                </div>
+                            </IonCol>
                         </IonRow>
                     </IonGrid>
                 </IonContent>
