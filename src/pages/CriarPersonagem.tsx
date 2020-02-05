@@ -1,4 +1,4 @@
-import { IonContent, IonPage, IonGrid, IonRow, IonCol, IonSelect, IonSelectOption, IonHeader,  IonTitle, IonToolbar, IonItem } from '@ionic/react';
+import { IonContent, IonPage, IonButton, IonGrid, IonRow, IonCol, IonSelect, IonSelectOption, IonHeader,  IonTitle, IonToolbar, IonItem } from '@ionic/react';
 
 import React from 'react';
 
@@ -183,23 +183,29 @@ export default class CriarPersonagem extends React.Component {
                         </IonRow>
                         <IonRow style={{marginTop: '10px'}}>
                             <IonCol style={{padding: 0}}>
-                                <div style={{height: '50px', border: '1px solid black'}}></div>
+                                <IonButton expand="full">1</IonButton>
                             </IonCol>
                             <IonCol style={{padding: 0}}>
-                                <div style={{height: '50px', border: '1px solid black'}}></div>
+                                <IonButton expand="full"> 2</IonButton>
                             </IonCol>
                             <IonCol style={{padding: 0}}>
-                                <div style={{height: '50px', border: '1px solid black'}}></div>
+                                <IonButton expand="full">3</IonButton>
                             </IonCol>
                             <IonCol style={{padding: 0}}>
-                                <div style={{height: '50px', border: '1px solid black'}}></div>
+                                <IonButton expand="full">4</IonButton>
                             </IonCol>
                             <IonCol style={{padding: 0}}>
-                                <div style={{height: '50px', border: '1px solid black'}}></div>
+                                <IonButton expand="full">5</IonButton>
                             </IonCol>
                             <IonCol style={{padding: 0}}>
-                                <div style={{height: '50px', border: '1px solid black'}}></div>
+                                <IonButton expand="full">6</IonButton>
                             </IonCol>
+                        </IonRow>
+                        <IonRow style={{marginTop: '10px'}}>
+                            <IonCol>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but al
+                            </IonCol>
+
                         </IonRow>
                     </IonGrid>
                 </IonContent>
