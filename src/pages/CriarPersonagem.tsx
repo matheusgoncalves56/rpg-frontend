@@ -35,7 +35,12 @@ export default class CriarPersonagem extends React.Component {
         atributos: [],
         profissaoSelecionada: new Profissao(0, '', 0, 0, 0),
         personalidadeSelecionada: new Personalidade(0, '', 0, 0, 0),
-        racaSelecionada: new Raca(0, '', 0, 0, 0)
+        racaSelecionada: new Raca(0, '', 0, 0, 0),
+        caracteristicaPrincipal: {
+            corpo: 2,
+            sentidos: 2,
+            mente: 2
+        }
     }
 
     componentDidMount() {
@@ -49,15 +54,47 @@ export default class CriarPersonagem extends React.Component {
 
         const atributos = this.atributoService.obterAtributos();
 
-        this.setState({
-            personalidades,
-            racas,
-            profissoes,
-            atributos,
-            personalidadeSelecionada: personalidades[Math.floor(Math.random() * tamanhoPersonalidades)],
-            racaSelecionada: racas[Math.floor(Math.random() * tamanhoRacas)],
-            profissaoSelecionada: profissoes[Math.floor(Math.random() * tamanhoProfissoes)],
-        })
+            const personalidadeSelecionada = personalidades[Math.floor(Math.random() * tamanhoPersonalidades)];
+            const racaSelecionada = racas[Math.floor(Math.random() * tamanhoRacas)];
+            const profissaoSelecionada = profissoes[Math.floor(Math.random() * tamanhoProfissoes)];
+        
+            this.setState({
+                personalidades,
+                racas,
+                profissoes,
+                atributos,
+                personalidadeSelecionada,
+                racaSelecionada,
+                profissaoSelecionada,
+            })
+
+        this.atualizarCaracteristicas(profissaoSelecionada, personalidadeSelecionada, racaSelecionada);
+    }
+
+    atualizarCaracteristicas = (profissaoSelecionada: Profissao, personalidadeSelecionada: Personalidade, racaSelecionada: Raca) => {
+        const corpo = this.state.caracteristicaPrincipal.corpo 
+            + profissaoSelecionada.corpo
+            + personalidadeSelecionada.corpo
+            + racaSelecionada.corpo;
+        
+        const mente = this.state.caracteristicaPrincipal.mente 
+            + profissaoSelecionada.mente
+            + personalidadeSelecionada.mente
+            + racaSelecionada.mente;
+
+        const sentidos = this.state.caracteristicaPrincipal.sentidos 
+            + profissaoSelecionada.sentidos
+            + personalidadeSelecionada.sentidos
+            + racaSelecionada.sentidos;
+        
+        console.log(corpo)
+        this.setState({caracteristicaPrincipal: {
+            corpo, mente, sentidos
+        }})
+    }
+
+    atualizarAtributos = () => {
+
     }
 
     render(){
@@ -125,13 +162,13 @@ export default class CriarPersonagem extends React.Component {
                                 <IonGrid style={{padding: 0}}>
                                     <IonRow style={{marginBottom: '10px'}}>
                                         <IonCol>
-                                            <div style={{backgroundColor: '#AD1E19', textAlign: 'center', paddingTop: 10, paddingBottom: 10, margin: 1, color: 'white'}} >3</div>
+                                            <div style={{backgroundColor: '#AD1E19', textAlign: 'center', paddingTop: 10, paddingBottom: 10, margin: 1, color: 'white'}} >{this.state.caracteristicaPrincipal.corpo}</div>
                                         </IonCol>
                                         <IonCol>
-                                            <div style={{backgroundColor: '#1D930C', textAlign: 'center', paddingTop: 10, paddingBottom: 10, margin: 1, color: 'white'}} >3</div>
+                                            <div style={{backgroundColor: '#1D930C', textAlign: 'center', paddingTop: 10, paddingBottom: 10, margin: 1, color: 'white'}} >{this.state.caracteristicaPrincipal.sentidos}</div>
                                         </IonCol>
                                         <IonCol>
-                                        <div style={{backgroundColor: '#0A5E98', textAlign: 'center', paddingTop: 10, paddingBottom: 10, margin: 1, color: 'white'}} >3</div>
+                                        <div style={{backgroundColor: '#0A5E98', textAlign: 'center', paddingTop: 10, paddingBottom: 10, margin: 1, color: 'white'}} >{this.state.caracteristicaPrincipal.mente}</div>
                                         </IonCol>
                                     </IonRow>   
                                     
